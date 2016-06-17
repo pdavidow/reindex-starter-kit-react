@@ -1,5 +1,5 @@
 import stampit from 'stampit';
-import mathjs from 'mathjs';
+import {lcm} from 'mathjs';
 import {SmartModelPrivate} from '../models/private';
 
 const privates = SmartModelPrivate.create();
@@ -39,7 +39,7 @@ export const Beat = stampit()
         })},
 
         get_tickCount() {return privates.getSmartProp(this, 'tickCount', () => {
-            return mathjs.lcm(this.get_rh(), this.get_lh());
+            return lcm(this.get_rh(), this.get_lh());
         })},
         reset_tickCount() {privates.reset(this, 'tickCount')},
 

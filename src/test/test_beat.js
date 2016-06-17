@@ -1,5 +1,5 @@
 import test from 'tape';
-import _ from 'lodash';
+import {isEqual} from 'lodash';
 import {Beat} from '../models/beat';
 
 test('Beat tick count', (assert) => {
@@ -25,11 +25,11 @@ test('Beat rh ticks', (assert) => {
 
     let actual = Beat({rh: 3, lh: 1}).get_rhTickIndices();
     let expected = [0,1,2];
-    assert.ok(_.isEqual(actual, expected), msg);
+    assert.ok(isEqual(actual, expected), msg);
 
     actual = Beat({rh: 3, lh: 4}).get_rhTickIndices();
     expected = [0,4,8];
-    assert.ok(_.isEqual(actual, expected), msg);
+    assert.ok(isEqual(actual, expected), msg);
 
     assert.end();
 });
@@ -39,11 +39,11 @@ test('Beat lh ticks', (assert) => {
 
     let actual = Beat({rh: 3, lh: 1}).get_lhTickIndices();
     let expected = [0];
-    assert.ok(_.isEqual(actual, expected), msg);
+    assert.ok(isEqual(actual, expected), msg);
 
      actual = Beat({rh: 3, lh: 4}).get_lhTickIndices();
      expected = [0,3,6,9];
-     assert.ok(_.isEqual(actual, expected), msg);
+     assert.ok(isEqual(actual, expected), msg);
 
     assert.end();
 });
@@ -89,7 +89,7 @@ test('Changing rh should reset rhTickIndices', (assert) => {
     const actual = beat.get_rhTickIndices();
     const expected = [0,4,8];
 
-    assert.ok(_.isEqual(actual, expected), msg);
+    assert.ok(isEqual(actual, expected), msg);
 
     assert.end();
 });
@@ -104,7 +104,7 @@ test('Changing lh should reset rhTickIndices', (assert) => {
     const actual = beat.get_rhTickIndices();
     const expected = [0,4,8];
 
-    assert.ok(_.isEqual(actual, expected), msg);
+    assert.ok(isEqual(actual, expected), msg);
 
     assert.end();
 });
@@ -119,7 +119,7 @@ test('Changing rh should reset lhTickIndices', (assert) => {
     const actual = beat.get_lhTickIndices();
     const expected = [0,3,6,9];
 
-    assert.ok(_.isEqual(actual, expected), msg);
+    assert.ok(isEqual(actual, expected), msg);
 
     assert.end();
 });
@@ -134,7 +134,7 @@ test('Changing lh should reset lhTickIndices', (assert) => {
     const actual = beat.get_lhTickIndices();
     const expected = [0,3,6,9];
 
-    assert.ok(_.isEqual(actual, expected), msg);
+    assert.ok(isEqual(actual, expected), msg);
 
     assert.end();
 });
